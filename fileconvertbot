@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>File Converter Bot for Discord</title>
+       <style>
+           /* 这里是所有的 CSS 样式 */
+           body {
+               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+               line-height: 1.6;
+               color: #333;
+               max-width: 800px;
+               margin: 0 auto;
+               padding: 20px;
+               background: #f0f0f0;
+           }
+           /* ... 其余的 CSS 样式 ... */
+       </style>
+   </head>
+   <body>
+       <!-- 这里是所有的 HTML 内容 -->
+       <select id="language-selector">
+           <option value="en">English</option>
+           <option value="zh">中文</option>
+           <option value="ko">한국어</option>
+           <option value="ru">Русский</option>
+           <option value="de">Deutsch</option>
+           <option value="es">Español</option>
+       </select>
+
+       <header>
+           <h1 data-lang="title">File Converter Bot for Discord</h1>
+           <!-- ... 其余的 HTML 内容 ... -->
+       </header>
+
+       <!-- ... 主要内容和页脚 ... -->
+
+       <script>
+       // 这里是 JavaScript 代码
+       const languages = {
+           en: {
+               // 英文翻译
+           },
+           zh: {
+               // 中文翻译
+           },
+           // ... 其他语言的翻译 ...
+       };
+
+       function changeLanguage(lang) {
+           // 语言切换函数
+       }
+
+       document.getElementById('language-selector').addEventListener('change', function() {
+           changeLanguage(this.value);
+       });
+
+       // 初始化为英语
+       changeLanguage('en');
+       </script>
+   </body>
+   </html>
