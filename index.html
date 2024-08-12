@@ -1,63 +1,246 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>File Converter Bot for Discord</title>
-       <style>
-           /* 这里是所有的 CSS 样式 */
-           body {
-               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-               line-height: 1.6;
-               color: #333;
-               max-width: 800px;
-               margin: 0 auto;
-               padding: 20px;
-               background: #f0f0f0;
-           }
-           /* ... 其余的 CSS 样式 ... */
-       </style>
-   </head>
-   <body>
-       <!-- 这里是所有的 HTML 内容 -->
-       <select id="language-selector">
-           <option value="en">English</option>
-           <option value="zh">中文</option>
-           <option value="ko">한국어</option>
-           <option value="ru">Русский</option>
-           <option value="de">Deutsch</option>
-           <option value="es">Español</option>
-       </select>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Converter Bot for Discord</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        header, section, footer {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #e0e0e0;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #2980b9;
+            text-decoration: none;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, textarea, button, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        .format-item {
+            background-color: #f8f8f8;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .add-bot-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <select id="language-selector">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="ko">한국어</option>
+        <option value="ru">Русский</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+    </select>
 
-       <header>
-           <h1 data-lang="title">File Converter Bot for Discord</h1>
-           <!-- ... 其余的 HTML 内容 ... -->
-       </header>
+    <header>
+        <h1 data-lang="title">File Converter Bot for Discord</h1>
+        <p data-lang="subtitle">Convert files directly in your Discord server. Simple, fast, efficient.</p>
+        <div class="add-bot-container">
+            <a href="https://discord.com/oauth2/authorize?client_id=1258258162545459332&permissions=108544&integration_type=0&scope=bot+applications.commands" class="cta-button" data-lang="add-to-discord">Add to Discord</a>
+        </div>
+    </header>
 
-       <!-- ... 主要内容和页脚 ... -->
+    <main>
+        <section id="usage">
+            <h2 data-lang="how-to-use">How to Use</h2>
+            <ol>
+                <li data-lang="step1">Add bot to your server</li>
+                <li data-lang="step2">Upload file to Discord</li>
+                <li data-lang="step3">Type <code>!convert [format]</code></li>
+                <li data-lang="step4">Receive converted file</li>
+            </ol>
+            <p data-lang="example">Example: To convert a file to PDF, upload the file and type:</p>
+            <code>!convert pdf</code>
+        </section>
 
-       <script>
-       // 这里是 JavaScript 代码
-       const languages = {
-           en: {
-               // 英文翻译
-           },
-           zh: {
-               // 中文翻译
-           },
-           // ... 其他语言的翻译 ...
-       };
+        <section id="supported-formats">
+            <h2 data-lang="supported-formats">Supported Formats</h2>
+            <div class="format-grid">
+                <div class="format-item">PDF</div>
+                <div class="format-item">DOCX</div>
+                <div class="format-item">JPG</div>
+                <div class="format-item">PNG</div>
+                <div class="format-item">GIF</div>
+                <div class="format-item">WebP</div>
+                <div class="format-item">PSD</div>
+                <div class="format-item">MP3</div>
+                <div class="format-item">MP4</div>
+                <div class="format-item">AVI</div>
+                <div class="format-item">TXT</div>
+                <div class="format-item">PPT</div>
+            </div>
+            <p data-lang="formats-note">Note: This list is not exhaustive. Use <code>!formats</code> command for a complete list.</p>
+        </section>
 
-       function changeLanguage(lang) {
-           // 语言切换函数
-       }
+        <section id="commands">
+            <h2 data-lang="commands">Commands</h2>
+            <ul>
+                <li data-lang="convert-command"><code>!convert [format]</code> - Convert file</li>
+                <li data-lang="formats-command"><code>!formats</code> - List supported formats</li>
+                <li data-lang="help-command"><code>!help</code> - Show help</li>
+            </ul>
+        </section>
 
-       document.getElementById('language-selector').addEventListener('change', function() {
-           changeLanguage(this.value);
-       });
+        <section id="contact">
+            <h2 data-lang="contact-us">Contact Us</h2>
+            <form action="https://formspree.io/f/mqazbgby" method="POST">
+                <input type="email" name="email" data-lang="email-placeholder" placeholder="Your email" required>
+                <input type="text" name="topic" data-lang="topic-placeholder" placeholder="Topic" required>
+                <textarea name="message" data-lang="message-placeholder" placeholder="Your message" required></textarea>
+                <button type="submit" data-lang="send">Send</button>
+            </form>
+        </section>
+    </main>
 
-       // 初始化为英语
-       changeLanguage('en');
-       </script>
-   </body>
-   </html>
+    <footer>
+        <div class="add-bot-container">
+            <a href="https://discord.com/oauth2/authorize?client_id=1258258162545459332&permissions=108544&integration_type=0&scope=bot+applications.commands" class="cta-button" data-lang="add-to-discord">Add to Discord</a>
+        </div>
+    </footer>
+
+    <script>
+    const languages = {
+        en: {
+            "title": "File Converter Bot for Discord",
+            "subtitle": "Convert files directly in your Discord server. Simple, fast, efficient.",
+            "add-to-discord": "Add to Discord",
+            "how-to-use": "How to Use",
+            "step1": "Add bot to your server",
+            "step2": "Upload file to Discord",
+            "step3": "Type <code>!convert [format]</code>",
+            "step4": "Receive converted file",
+            "example": "Example: To convert a file to PDF, upload the file and type:",
+            "supported-formats": "Supported Formats",
+            "formats-note": "Note: This list is not exhaustive. Use <code>!formats</code> command for a complete list.",
+            "commands": "Commands",
+            "convert-command": "<code>!convert [format]</code> - Convert file",
+            "formats-command": "<code>!formats</code> - List supported formats",
+            "help-command": "<code>!help</code> - Show help",
+            "contact-us": "Contact Us",
+            "email-placeholder": "Your email",
+            "topic-placeholder": "Topic",
+            "message-placeholder": "Your message",
+            "send": "Send"
+        },
+        zh: {
+            "title": "Discord文件转换机器人",
+            "subtitle": "直接在Discord服务器中转换文件。简单、快速、高效。",
+            "add-to-discord": "添加到Discord",
+            "how-to-use": "使用方法",
+            "step1": "将机器人添加到您的服务器",
+            "step2": "将文件上传到Discord",
+            "step3": "输入 <code>!convert [格式]</code>",
+            "step4": "接收转换后的文件",
+            "example": "示例：要将文件转换为PDF，上传文件并输入：",
+            "supported-formats": "支持的格式",
+            "formats-note": "注意：此列表并非详尽无遗。使用 <code>!formats</code> 命令获取完整列表。",
+            "commands": "命令",
+            "convert-command": "<code>!convert [格式]</code> - 转换文件",
+            "formats-command": "<code>!formats</code> - 列出支持的格式",
+            "help-command": "<code>!help</code> - 显示帮助",
+            "contact-us": "联系我们",
+            "email-placeholder": "您的邮箱",
+            "topic-placeholder": "主题",
+            "message-placeholder": "您的留言",
+            "send": "发送"
+        },
+        // Add translations for other languages here (ko, ru, de, es)
+    };
+
+    function changeLanguage(lang) {
+        document.querySelectorAll('[data-lang]').forEach(elem => {
+            const key = elem.getAttribute('data-lang');
+            if (languages[lang] && languages[lang][key]) {
+                if (elem.tagName === 'INPUT' || elem.tagName === 'TEXTAREA') {
+                    elem.placeholder = languages[lang][key];
+                } else {
+                    elem.innerHTML = languages[lang][key];
+                }
+            }
+        });
+    }
+
+    document.getElementById('language-selector').addEventListener('change', function() {
+        changeLanguage(this.value);
+    });
+
+    // Initialize with English
+    changeLanguage('en');
+    </script>
+</body>
+</html>
